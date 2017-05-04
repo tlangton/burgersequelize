@@ -1,2 +1,2 @@
-# burgersequelize
-week 15
+# burger
+Week 14 homework bootcamp
