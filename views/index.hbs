@@ -1,34 +1,74 @@
-<h1>Burgers</h1>
+<div class="container">
+<div class="jumbotron">
+<div class="page-header">
+<h1>Burghers!</h1>
+</div>
 
-<h2>Uneaten Burgers</h2>
 
-{{#each burgers as |burger|}}
-  <div class="burger">
-    {{#unless burger.devoured}}
-      {{burger.name}}
-      <form action="/api/burgers/{{burger.id}}/eat" method="post">
-        <button type="submit">Eat</button>
-      </form>
-    {{/unless}}
+<div class="row" >
+
+  <div class="col-md-6 col-md-offset-1">
+    <img src="../images/Group_of_Burghers.jpg" style="width:604px;" class="img-circle">
+<h5>The Burghers of Calais by Auguste Rodin</h5>
+</div>
+
+</div>
+
+
+<div class="row" >
+  <div class="col-md-6"  >
+    <h3>Yet to be eaten burghers!</h3>
+    <ul class="list-group">
+      {{#each burgers as |burger|}}
+        {{#unless burger.devoured}}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-6">
+            {{burger.name}}
+              </div>
+<div class="col-md-6">
+          <form action="/api/burgers/{{burger.id}}/eat" method="post">
+              <input type="hidden" name="devoured" value="true">
+              <button type="submit" class="btn btn-success btn-xs">EAT ME!</button>
+            </form>
   </div>
-{{/each}}
+  </div>
+          </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+
+
+  <div class="col-md-6">
+    <h3>Burghers that are devoured!</h3>
+    <ulclass="list-group">
+      {{#each burgers as |burger|}}
+        {{#if burger.devoured}}
+          <li class="list-group-item">
+            {{burger.name}}
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
 
 <hr>
 
-<h2>Eaten Burgers</h2>
-{{#each burgers as |burger|}}
-  <div class="burger">
-    {{#if burger.devoured}}
-      {{burger.name}}
-    {{/if}}
-  </div>
-{{/each}}
 
-<hr>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-<h2>New Burger</h2>
-<form action="/api/burgers" method="post">
-  <label for="burger-name">Burger Name</label>
-  <input type="text" id="burger-name" name="name" value="">
-  <button type="submit">Submit</button>
+<h3>New Burgher!</h3>
+<form class="create-update-form" action="/api/burgers" method="POST">
+
+  <div class="input-group">
+       <input type="text" class="form-control" placeholder="Yummy deliciousness..." id="burger-name" name="name" value="">
+       <span class="input-group-btn">
+         <button class="btn btn-success" type="submit">Add Burgher!</button>
+       </span>
+     </div>
 </form>
+
+</div>
+</div>
