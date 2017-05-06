@@ -1,0 +1,34 @@
+<h1>Burgers</h1>
+
+<h2>Uneaten Burgers</h2>
+
+{{#each burgers as |burger|}}
+  <div class="burger">
+    {{#unless burger.devoured}}
+      {{burger.name}}
+      <form action="/api/burgers/{{burger.id}}/eat" method="post">
+        <button type="submit">Eat</button>
+      </form>
+    {{/unless}}
+  </div>
+{{/each}}
+
+<hr>
+
+<h2>Eaten Burgers</h2>
+{{#each burgers as |burger|}}
+  <div class="burger">
+    {{#if burger.devoured}}
+      {{burger.name}}
+    {{/if}}
+  </div>
+{{/each}}
+
+<hr>
+
+<h2>New Burger</h2>
+<form action="/api/burgers" method="post">
+  <label for="burger-name">Burger Name</label>
+  <input type="text" id="burger-name" name="name" value="">
+  <button type="submit">Submit</button>
+</form>

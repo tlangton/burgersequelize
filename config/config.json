@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "root",
+    "username": "bootcamp",
     "password": null,
-    "database": "burgers_sequelize",
-    "host": "127.0.0.1",
+    "database": "burgers_dev",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "database": "BurgersTest",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
