@@ -1,5 +1,6 @@
 // Express boilerplate
-const app = require("express")();
+const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "hbs");
@@ -9,6 +10,12 @@ const burgersRouter = require("./routers/burgers");
 
 // Mount burgrersRouter router middleware
 app.use("/api", burgersRouter);
+
+// Static middleware
+app.use(express.static("./public"));
+// app.get("/assets/images/burghers.jpg", (req, res) => {
+//   res.sendFile(__dirname + "/public/assets/images/burghers.jpg");
+// });
 
 // const db = require("./models");
 // const Burger = db.Burger
@@ -21,4 +28,4 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
